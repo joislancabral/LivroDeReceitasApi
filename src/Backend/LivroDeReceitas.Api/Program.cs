@@ -1,3 +1,6 @@
+using LivroDeReceitas.Infrastructure.Migrations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,4 +25,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+AtualizarBaseDeDados();
+
 app.Run();
+
+void AtualizarBaseDeDados()
+{
+    Database.CriarDatabase();
+}
