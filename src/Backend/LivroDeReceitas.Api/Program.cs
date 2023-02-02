@@ -1,3 +1,4 @@
+using LivroDeReceitas.Domain.Extension;
 using LivroDeReceitas.Infrastructure.Migrations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,5 +32,8 @@ app.Run();
 
 void AtualizarBaseDeDados()
 {
-    Database.CriarDatabase();
+    var conexao = builder.Configuration.GetConnectionString();
+    var nomeDatabase = builder.Configuration.GetNomeDatabase();
+
+    Database.CriarDatabase(conexao, nomeDatabase);
 }
